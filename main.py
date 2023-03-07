@@ -54,13 +54,12 @@ def ban_user(message):
 
 @bot.message_handler(commands=['admin_commands'])
 def delete_all_from_user(message):
-    bot.send_message(message.from_user.id, f'message={isinstance(message.from_user.id, int)}, env={isinstance(YOUR_CHAT_ID, str)}')
-#     if message.from_user.id != YOUR_CHAT_ID:
-#         pass
-#     else:
-#         bot.send_message(YOUR_CHAT_ID, '/ban_user - Ban user (use reply)\n'
-#                                        '/unban_user - Unban user (use reply)\n'
-#                                        '/clear_history - Clear all messages from user (use reply)')
+    if str(message.from_user.id) != YOUR_CHAT_ID:
+        pass
+    else:
+        bot.send_message(YOUR_CHAT_ID, '/ban_user - Ban user (use reply)\n'
+                                       '/unban_user - Unban user (use reply)\n'
+                                       '/clear_history - Clear all messages from user (use reply)')
 
 
 @bot.message_handler(commands=['clear_history'])
@@ -89,7 +88,7 @@ def forward_all_messages(message):
     with open('banned_id.json', 'r') as f:
         banned_ids = json.load(f)
 
-    if message.from_user.id == YOUR_CHAT_ID:
+    if str(message.from_user.id) == YOUR_CHAT_ID:
         if hasattr(message.reply_to_message, 'forward_from') and message.reply_to_message.forward_from is not None:
             bot.send_message(message.reply_to_message.forward_from.id, message.text)
         else:
