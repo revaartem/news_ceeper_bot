@@ -54,7 +54,7 @@ def ban_user(message):
 
 @bot.message_handler(commands=['admin_commands'])
 def delete_all_from_user(message):
-    bot.send_message(message.from_user.id, f'message={message.from_user.id}, env={YOUR_CHAT_ID}')
+    bot.send_message(message.from_user.id, f'message={isinstance(message.from_user.id, int)}, env={isinstance(YOUR_CHAT_ID, str)}')
 #     if message.from_user.id != YOUR_CHAT_ID:
 #         pass
 #     else:
