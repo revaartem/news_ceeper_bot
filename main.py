@@ -11,6 +11,15 @@ YOUR_CHAT_ID = os.environ.get('YOUR_CHAT_ID')
 
 @bot.message_handler(commands=['start'])
 def message_start(message):
+    """
+    Responds to the /start command and sends a welcome message to the user.
+
+    Args:
+        message: A telebot.types.Message object representing the incoming message.
+
+    Returns:
+        None
+    """
     start_message = 'Hello. In this bot you can send to us any information.\n' \
                     'Just type something and push the "Send" button.'
     bot.send_message(message.from_user.id, start_message)
@@ -18,6 +27,16 @@ def message_start(message):
 
 @bot.message_handler(commands=['ban_user'])
 def ban_user(message):
+    """
+    Ban the user who is the sender of the message that was answered with the command /ban_user.
+
+    Args:
+        message: A telebot.types.Message object representing the incoming message.
+
+    Returns:
+        None
+    """
+
     with open('banned_id.json', 'r') as f:
         banned_ids = json.load(f)
 
@@ -35,7 +54,17 @@ def ban_user(message):
 
 
 @bot.message_handler(commands=['unban_user'])
-def ban_user(message):
+def unban_user(message):
+    """
+    Unban the user who is the sender of the message that was answered with the command /unban_user.
+
+    Args:
+        message: A telebot.types.Message object representing the incoming message.
+
+    Returns:
+        None
+    """
+
     with open('banned_id.json', 'r') as f:
         banned_ids = json.load(f)
 
@@ -53,7 +82,17 @@ def ban_user(message):
 
 
 @bot.message_handler(commands=['admin_commands'])
-def delete_all_from_user(message):
+def admin_commands(message):
+    """
+    Send list of available admin commands to the admin user.
+
+    Args:
+        message (telebot.types.Message): The incoming message that triggered the function.
+
+    Returns:
+        None
+    """
+
     if str(message.from_user.id) != YOUR_CHAT_ID:
         pass
     else:
@@ -64,6 +103,16 @@ def delete_all_from_user(message):
 
 @bot.message_handler(commands=['clear_history'])
 def delete_all_from_user(message):
+    """
+    Deletes all messages from a specific user.
+
+    Parameters:
+    message (telegram.Message): The message object representing the command.
+
+    Returns:
+    None
+    """
+
     with open('messages_id.json', 'r') as f:
         messages_ids = json.load(f)
 
@@ -85,6 +134,19 @@ def delete_all_from_user(message):
 @bot.message_handler(content_types=["text", "audio", "document", "photo", "sticker", "video", "video_note",
                                     "voice", "contact", "location", "venue"])
 def forward_all_messages(message):
+    """
+    Forwards all incoming messages to a designated chat ID, except for messages from the chat ID itself
+    or messages from banned users.
+
+    Parameters:
+    - message: a Telegram message object containing information about the message
+
+    Returns:
+    - None
+
+    Raises:
+    - None
+    """
     with open('banned_id.json', 'r') as f:
         banned_ids = json.load(f)
 
