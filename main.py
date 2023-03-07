@@ -54,12 +54,13 @@ def ban_user(message):
 
 @bot.message_handler(commands=['admin_commands'])
 def delete_all_from_user(message):
-    if message.from_user.id != YOUR_CHAT_ID:
-        pass
-    else:
-        bot.send_message(YOUR_CHAT_ID, '/ban_user - Ban user (use reply)\n'
-                                       '/unban_user - Unban user (use reply)\n'
-                                       '/clear_history - Clear all messages from user (use reply)')
+    bot.send_message(message.from_user.id, (message.from_user.id, YOUR_CHAT_ID)
+#     if message.from_user.id != YOUR_CHAT_ID:
+#         pass
+#     else:
+#         bot.send_message(YOUR_CHAT_ID, '/ban_user - Ban user (use reply)\n'
+#                                        '/unban_user - Unban user (use reply)\n'
+#                                        '/clear_history - Clear all messages from user (use reply)')
 
 
 @bot.message_handler(commands=['clear_history'])
