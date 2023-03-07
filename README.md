@@ -4,7 +4,7 @@ This is a Python script for a Telegram bot. The bot forwards all incoming messag
 
 Here is a description of the script's main functions:
 
-```/message_start```: This function responds to the /start command and sends a welcome message to the user.
+```/start```: This function responds to the /start command and sends a welcome message to the user.
 
 ```/ban_user```: This function bans the user who is the sender of the message that was answered with the command /ban_user.
 
