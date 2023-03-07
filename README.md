@@ -6,8 +6,8 @@ Here is a description of the script's main functions:
 
 ```/start```: This function responds to the /start command and sends a welcome message to the user.
 
-```/ban_user```: This function bans the user who is the sender of the message that was answered with the command /ban_user.
+```/ban_user```: This function bans the user who is the sender of the message that was answered with the command /ban_user (only with admin rights).
 
-```/unban_user```: This function unbans the user who is the sender of the message that was answered with the command /unban_user.
+```/unban_user```: This function unbans the user who is the sender of the message that was answered with the command /unban_user (only with admin rights).
 
-```/admin_commands```: This function sends a list of available admin commands to the admin user.
+```/admin_commands```: This function sends a list of available admin commands to the admin user (only with admin rights).
